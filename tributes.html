@@ -122,7 +122,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   if(grid && Array.isArray(tiers)){
     tiers.forEach(t=>{
       // 🟢 FIXED: Removed extra bullet in <li> content
-      const perksList = el('ul',{class:'list-clean'}, (t.perks||[]).map(p=>el('li',{},[p])));
+      const clean = s => String(s).replace(/^[•\s]+/, '');
+      const perksList = el('ul',{class:'list-clean'}, (t.perks||[]).map(p=>el('li',{},['• ', clean(p)])));
       grid.appendChild(
         el('div',{class:'card'},[
           el('h3',{},[t.token ? t.token+' ' : '', t.name]),
