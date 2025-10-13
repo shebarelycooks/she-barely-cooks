@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Pantry",
+    "description": "Weekly task + roll call. You\u2019ll be seen.",
+    "perks": [
+      "1 weekly task",
+      "Weekly voice note",
+      "Public roll call"
+    ],
+    "cta": "https://your-platform-link",
+    "note": "Entry-level obedience."
+  },
+  {
+    "name": "Stove",
+    "description": "Priority DMs + 1 custom command per week.",
+    "perks": [
+      "Priority DMs (24\u201348h)",
+      "1 custom command/week",
+      "Recipe snippets"
+    ],
+    "cta": "https://your-platform-link",
+    "note": "For reliable hands."
+  },
+  {
+    "name": "Chef\u2019s Table",
+    "description": "Private channel + quiet cook stream seat.",
+    "perks": [
+      "Private channel",
+      "2 customs/week",
+      "Monthly stream seat"
+    ],
+    "cta": "https://your-platform-link",
+    "note": "Limited availability."
+  }
+]

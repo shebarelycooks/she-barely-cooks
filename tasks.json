@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Sunday Table Set",
+    "description": "Send weekly tribute by 6pm. Submit pantry photo and three ingredients you\u2019ll bring next week.",
+    "due": "Sundays 6pm (your time)",
+    "penalty": "$25 Penalty Jar + dish duty task"
+  },
+  {
+    "title": "Quiet While I Stir",
+    "description": "30 minutes of phone-down silence while dinner simmers. DM a summary of what you learned waiting.",
+    "due": "Any weekday evening",
+    "penalty": "Lose voice note privilege for 24h"
+  },
+  {
+    "title": "Pantry Audit",
+    "description": "List 5 essentials you own. Replace any expired item before Friday Dessert.",
+    "due": "Friday 5pm",
+    "penalty": "Extra task assigned Sunday"
+  }
+]
