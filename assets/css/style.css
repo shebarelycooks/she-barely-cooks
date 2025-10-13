@@ -1,31 +1,237 @@
 :root {
-  --bg:#faf7f2;
-  --ink:#1b1b1b;
-  --accent:#c08a5a;
-  --soft:#e7dccf;
-  --card:#ffffff;
+  --bg: #faf7f2;
+  --ink: #1b1b1b;
+  --accent: #c08a5a;
+  --soft: #e7dccf;
+  --card: #ffffff;
 }
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
-.wrap{max-width:1000px;margin:0 auto;padding:10px 20px}
-.site-header{border-bottom:1px solid var(--soft);background:#fff;position:sticky;top:0;z-index:50}
-.site-header .wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 20px}
-.brand{font-family:"Playfair Display",serif;font-size:22px;text-decoration:none;color:var(--ink)}
-.site-nav a{margin-left:12px;text-decoration:none;color:var(--ink);padding:8px 10px;border-radius:8px}
-.site-nav a:hover{background:var(--soft)}
-.hero{padding:28px}
-.lead{opacity:.9}
-.card{background:var(--card);border:1px solid var(--soft);border-radius:16px;padding:20px;margin:22px 0}
-.cta-row{display:flex;gap:10px;flex-wrap:wrap}
-.cta{display:inline-block;padding:10px 16px;border:1px solid var(--accent);border-radius:12px;text-decoration:none;font-weight:600;color:var(--ink)}
-.cta.fill{background:var(--accent);color:#fff}
-.grid{display:grid;gap:18px}
-.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-.grid.three{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.rules{padding-left:18px}
-.table{width:100%;border-collapse:collapse}
-.table th,.table td{border-bottom:1px solid var(--soft);padding:10px;text-align:left}
-.note{font-size:14px;opacity:.8}
-.site-footer{border-top:1px solid var(--soft);padding:24px 0;margin-top:30px;background:#fff}
-@media (max-width:720px){.site-nav{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}}
+
+/* ------------------ */
+/* RESET & BASE STYLES */
+/* ------------------ */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* ------------------ */
+/* LAYOUT WRAPPER */
+/* ------------------ */
+.wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px; /* Added horizontal breathing space */
+}
+
+/* Adjust padding for smaller screens */
+@media (max-width: 720px) {
+  .wrap {
+    padding: 0 16px;
+  }
+}
+
+/* ------------------ */
+/* HEADER */
+/* ------------------ */
+.site-header {
+  border-bottom: 1px solid var(--soft);
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px; /* consistent spacing */
+}
+
+.brand {
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.site-nav a {
+  margin-left: 12px;
+  text-decoration: none;
+  color: var(--ink);
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.site-nav a:hover {
+  background: var(--soft);
+}
+
+/* ------------------ */
+/* HERO SECTION */
+/* ------------------ */
+.hero {
+  padding: 48px 0 28px;
+  text-align: center;
+}
+
+.lead {
+  opacity: 0.9;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ------------------ */
+/* CARDS & GRID */
+/* ------------------ */
+.card {
+  background: var(--card);
+  border: 1px solid var(--soft);
+  border-radius: 16px;
+  padding: 24px;
+  margin: 24px 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.grid {
+  display: grid;
+  gap: 18px;
+}
+
+.grid.two {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid.three {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* ------------------ */
+/* CALL TO ACTION BUTTONS */
+/* ------------------ */
+.cta-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.cta {
+  display: inline-block;
+  padding: 10px 16px;
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--ink);
+  transition: all 0.2s ease;
+}
+
+.cta.fill {
+  background: var(--accent);
+  color: #fff;
+}
+
+.cta:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+/* ------------------ */
+/* TABLES & RULES */
+/* ------------------ */
+.rules {
+  padding-left: 22px;
+  margin-top: 12px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border-bottom: 1px solid var(--soft);
+  padding: 10px;
+  text-align: left;
+}
+
+.table th {
+  background: #fff9f4;
+}
+
+/* ------------------ */
+/* SMALL DETAILS */
+/* ------------------ */
+.note {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-top: 8px;
+}
+
+/* ------------------ */
+/* FOOTER */
+/* ------------------ */
+.site-footer {
+  border-top: 1px solid var(--soft);
+  padding: 28px 0;
+  margin-top: 40px;
+  background: #fff;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.site-footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ------------------ */
+/* RESPONSIVE NAVIGATION */
+/* ------------------ */
+@media (max-width: 720px) {
+  .site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: flex-end;
+  }
+
+  .site-header .wrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-nav a {
+    margin-left: 0;
+    padding: 6px 10px;
+  }
+
+  .hero {
+    padding: 32px 0;
+  }
+}
