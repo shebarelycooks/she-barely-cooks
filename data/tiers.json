@@ -1,35 +1,66 @@
 [
   {
-    "name": "Pantry",
-    "description": "Weekly task + roll call. You\u2019ll be seen.",
+    "name": "The Supplicant",
+    "min": 0,
+    "max": 99,
+    "token": "🕯️",
+    "description": "You kneel. You offer. You hope to be seen.",
     "perks": [
-      "1 weekly task",
-      "Weekly voice note",
-      "Public roll call"
+      "Seen in The Quiet List",
+      "Access to Kitchen Notes",
+      "1 weekly task"
     ],
-    "cta": "https://your-platform-link",
-    "note": "Entry-level obedience."
+    "cta": "tributes.html"
   },
   {
-    "name": "Stove",
-    "description": "Priority DMs + 1 custom command per week.",
+    "name": "The Faithful",
+    "min": 100,
+    "max": 299,
+    "token": "🥀",
+    "description": "You return again and again. Your devotion is noticed.",
     "perks": [
-      "Priority DMs (24\u201348h)",
+      "Quiet acknowledgment",
+      "1 weekly task + check-in",
+      "Occasional voice note"
+    ],
+    "cta": "tributes.html"
+  },
+  {
+    "name": "The Consecrated",
+    "min": 300,
+    "max": 699,
+    "token": "🕊️",
+    "description": "Your offerings have weight; you’re part of the ritual.",
+    "perks": [
+      "Priority message window",
+      "2 weekly tasks",
+      "Early access to Notes"
+    ],
+    "cta": "tributes.html"
+  },
+  {
+    "name": "The Anointed",
+    "min": 700,
+    "max": 1499,
+    "token": "💍",
+    "description": "You’ve been marked — favored and trusted.",
+    "perks": [
+      "Private channel access",
       "1 custom command/week",
-      "Recipe snippets"
+      "Reserved seat in monthly quiet stream"
     ],
-    "cta": "https://your-platform-link",
-    "note": "For reliable hands."
+    "cta": "tributes.html"
   },
   {
-    "name": "Chef\u2019s Table",
-    "description": "Private channel + quiet cook stream seat.",
+    "name": "The Sanctified",
+    "min": 1500,
+    "token": "⛓️",
+    "description": "You exist only to serve the divine will that stirs you.",
     "perks": [
-      "Private channel",
-      "2 customs/week",
-      "Monthly stream seat"
+      "Priority recognition",
+      "Personal ritual (monthly)",
+      "Permanent entry in my private ledger"
     ],
-    "cta": "https://your-platform-link",
-    "note": "Limited availability."
+    "cta": "tributes.html"
   }
 ]

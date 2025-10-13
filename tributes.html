@@ -38,11 +38,107 @@
 <main class="wrap">
 
   <section class="card">
-    <h1>Tribute Tiers</h1>
-    <p class="lead">Choose your place in my kitchen. Structure earns attention.</p>
-    <div id="tiers" class="grid three"></div>
-    <p class="note">All tributes proceed through approved platforms. Consent is mandatory. No refunds.</p>
-  </section>
+  <div class="section-head">
+    <h2>Tribute Tiers</h2>
+    <span class="muted">You don’t buy your place — you earn it.</span>
+  </div>
+  <div id="tiers-grid" class="grid two"></div>
+  <p class="muted mini">All tributes are voluntary gifts within a consensual dynamic.</p>
+</section>
+
+<section class="card">
+  <div class="section-head">
+    <h2>Rank Calculator</h2>
+    <span class="muted">Track your lifetime devotion and see your standing.</span>
+  </div>
+  <div class="grid two">
+    <div>
+      <label for="lifetimeTotal" class="muted mini">Enter your lifetime total (USD)</label>
+      <input id="lifetimeTotal" type="number" min="0" step="1" placeholder="e.g. 324" style="width:100%;padding:12px;border:1px solid var(--soft);border-radius:10px;background:#fff;">
+      <p id="rankOutput" class="note" style="margin-top:12px;">—</p>
+      <div aria-label="progress" style="height:10px;border-radius:999px;background:#f2e9df;border:1px solid var(--soft);overflow:hidden;">
+        <div id="rankBar" style="height:100%;width:0%;background:var(--accent);"></div>
+      </div>
+      <p id="nextStep" class="mini muted" style="margin-top:8px;">—</p>
+    </div>
+    <div>
+      <p class="note-inline">How it works</p>
+      <ul class="list-clean">
+        <li>• Each offering adds to your <strong>lifetime total</strong>.</li>
+        <li>• Crossing thresholds <strong>elevates your rank</strong>.</li>
+        <li>• Recognition is quiet, consistent, and earned.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script>
+async function getJSON(p){ try{ const r=await fetch(p,{cache:'no-store'}); if(!r.ok) throw 0; return await r.json(); } catch(e){ return null; } }
+function el(t,a={},c=[]){const n=document.createElement(t); for(const[k,v] of Object.entries(a)){ if(k==='class') n.className=v; else if(k==='html') n.innerHTML=v; else n.setAttribute(k,v); } for(const x of c){ n.appendChild(typeof x==='string'?document.createTextNode(x):x); } return n;}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  // Render tiers
+  const grid = document.getElementById('tiers-grid');
+  const tiers = await getJSON('data/tiers.json');
+  if(grid && Array.isArray(tiers)){
+    tiers.forEach(t=>{
+      const perksList = el('ul',{class:'list-clean'}, (t.perks||[]).map(p=>el('li',{},['• ',p])));
+      grid.appendChild(
+        el('div',{class:'card'},[
+          el('h3',{},[t.token ? t.token+' ' : '', t.name]),
+          el('p',{class:'muted'},[t.description||'']),
+          perksList,
+          el('p',{class:'mini muted'},[
+            typeof t.max === 'number'
+              ? `Threshold: $${t.min}–$${t.max}`
+              : `Threshold: $${t.min}+`
+          ])
+        ])
+      );
+    });
+  } else if(grid) {
+    grid.appendChild(el('p',{class:'muted'},['Tiers will post soon.']));
+  }
+
+  // Rank calculator
+  const input = document.getElementById('lifetimeTotal');
+  const out = document.getElementById('rankOutput');
+  const bar = document.getElementById('rankBar');
+  const next = document.getElementById('nextStep');
+
+  function computeRank(val, tiers){
+    let current = tiers[0], nextTier = null;
+    for(let i=0;i<tiers.length;i++){
+      const t = tiers[i];
+      const max = (typeof t.max === 'number') ? t.max : Infinity;
+      if(val >= t.min && val <= max){ current = t; nextTier = tiers[i+1] || null; break; }
+      if(val >= t.min && max === Infinity){ current = t; nextTier = null; break; }
+    }
+    return {current, nextTier};
+  }
+
+  function update(){
+    const val = Math.max(0, Number(input.value||0));
+    if(!Array.isArray(tiers)) return;
+    const {current, nextTier} = computeRank(val, tiers);
+
+    out.innerHTML = `<strong>Current Rank:</strong> ${current.token? current.token+' ' : ''}${current.name}`;
+
+    if(nextTier){
+      const range = (nextTier.max ?? Infinity) - nextTier.min;
+      const progress = Math.max(0, Math.min(1, (val - current.min) / ((current.max ?? val) - current.min || 1)));
+      const toGo = Math.max(0, nextTier.min - val);
+      bar.style.width = (progress*100).toFixed(1) + '%';
+      next.textContent = `Next: ${nextTier.name} at $${nextTier.min} (you’re $${toGo} away).`;
+    } else {
+      bar.style.width = '100%';
+      next.textContent = `You have reached the highest rank. Devotion recognized.`;
+    }
+  }
+
+  if(input){ input.addEventListener('input', update); update(); }
+});
+</script>
 
 </main>
 <footer class="site-footer">
