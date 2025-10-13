@@ -130,6 +130,18 @@ a:focus-visible {
   background: var(--soft);
 }
 
+.list-clean {
+  list-style-type: disc;   /* use the browser’s single dot */
+  padding-left: 22px;
+  margin: 10px 0 0;
+}
+.list-clean li {
+  margin: 6px 0;
+  line-height: 1.6;
+}
+.list-clean li::marker {
+  color: var(--accent);    /* your copper accent */
+}
 /* ------------------ */
 /* HERO SECTION */
 /* ------------------ */
