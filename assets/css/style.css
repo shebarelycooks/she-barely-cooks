@@ -47,6 +47,22 @@ body {
 /* ------------------ */
 /* HEADER */
 /* ------------------ */
+.logo {
+  height: 48px;       /* adjust as needed */
+  width: auto;
+  display: block;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;           /* space between logo and text */
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+}
 .site-header {
   border-bottom: 1px solid var(--soft);
   background: #fff;
@@ -59,7 +75,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px; /* consistent spacing */
+  flex-wrap: nowrap;        /* ⬅ prevents wrapping */
+  gap: 32px;                /* adds breathing space */
+  padding: 16px 24px;
+  overflow-x: auto;         /* allows horizontal scroll if screen is very small */
 }
 
 .brand {
