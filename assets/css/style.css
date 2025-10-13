@@ -48,12 +48,10 @@ body {
 /* HEADER */
 /* ------------------ */
 .logo {
-  height: 28px;              /* smaller height for perfect header fit */
+  height: 36px;           /* slightly larger, balanced visually */
   width: auto;
   display: block;
   object-fit: contain;
-  margin-top: 2px;           /* aligns it visually with text */
-  transition: all 0.2s ease; /* smooth hover scaling (optional) */
 }
 
 .logo:hover {
@@ -82,10 +80,30 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: nowrap;        /* ⬅ prevents wrapping */
-  gap: 32px;                /* adds breathing space */
+  flex-wrap: nowrap;           /* 🟢 keeps everything on one line */
+  gap: 24px;
   padding: 16px 24px;
-  overflow-x: auto;         /* allows horizontal scroll if screen is very small */
+  overflow-x: auto;            /* in case screen is very small */
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;                   /* even spacing between links */
+  flex-wrap: nowrap;           /* don't wrap */
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 500;
+  padding: 8px 6px;
+  border-radius: 8px;
+  white-space: nowrap;         /* 🟢 prevents breaking mid-word */
+}
+
+.site-nav a:hover {
+  background: var(--soft);
 }
 
 .brand {
@@ -95,19 +113,6 @@ body {
   color: var(--ink);
   font-weight: 600;
   letter-spacing: 0.3px;
-}
-
-.site-nav a {
-  margin-left: 12px;
-  text-decoration: none;
-  color: var(--ink);
-  padding: 8px 10px;
-  border-radius: 8px;
-  transition: background 0.2s ease;
-}
-
-.site-nav a:hover {
-  background: var(--soft);
 }
 
 /* ------------------ */
