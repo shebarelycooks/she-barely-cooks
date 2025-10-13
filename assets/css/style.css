@@ -130,18 +130,45 @@ a:focus-visible {
   background: var(--soft);
 }
 
+/* ------------------ */
+/* CLEAN LIST STYLE */
+/* ------------------ */
 .list-clean {
-  list-style-type: disc;   /* use the browser’s single dot */
+  list-style-type: disc;
+  list-style-position: outside;
   padding-left: 22px;
   margin: 10px 0 0;
 }
+
 .list-clean li {
   margin: 6px 0;
   line-height: 1.6;
 }
+
 .list-clean li::marker {
-  color: var(--accent);    /* your copper accent */
+  color: var(--accent);
 }
+
+/* fallback for older browsers */
+@supports not (selector(li::marker)) {
+  .list-clean {
+    list-style: none;
+    padding-left: 0;
+  }
+  .list-clean li {
+    position: relative;
+    padding-left: 18px;
+  }
+  .list-clean li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent);
+    line-height: 1.6;
+  }
+}
+
 /* ------------------ */
 /* HERO SECTION */
 /* ------------------ */
@@ -175,6 +202,16 @@ a:focus-visible {
   margin: 28px 0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Optional: global fade-up animation match */
+.card.fade-up {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 0.7s ease forwards;
+}
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .card:hover {
@@ -289,26 +326,67 @@ a:focus-visible {
   text-decoration: underline;
 }
 
-/* ------------------ */
-/* RESPONSIVE NAVIGATION */
-/* ------------------ */
+/* ============================
+   MOBILE / SMALL-SCREEN POLISH
+   ============================ */
+
+/* Fluid type that scales nicely across devices */
+h1 { font-family:"Playfair Display",serif; font-weight:600; line-height:1.2;
+     font-size: clamp(1.8rem, 2.5vw + 1.2rem, 2.6rem); }
+h2 { font-family:"Playfair Display",serif; font-weight:600; line-height:1.25;
+     font-size: clamp(1.3rem, 1.4vw + 1.1rem, 1.8rem); }
+h3 { font-weight:700; line-height:1.3;
+     font-size: clamp(1.05rem, 1vw + .9rem, 1.25rem); }
+
+/* Media and tables never overflow */
+img, video { max-width: 100%; height: auto; }
+
+/* Wide tables become horizontally scrollable */
+.table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.table table { width: 100%; }
+
+/* Improve tap targets on touch devices */
+@media (pointer: coarse) {
+  .site-nav a { padding: 10px 12px; }
+  .cta { padding: 14px 18px; }
+}
+
+/* Main mobile breakpoint */
 @media (max-width: 720px) {
-  .logo {
-    height: 28px;
-  }
+  /* Header stacks brand + nav, keeps nav scrollable if needed */
+  .site-header .wrap { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .site-nav { flex-wrap: wrap; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
 
-  .site-header .wrap {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  /* Logo a bit smaller so it doesn’t crowd */
+  .logo { height: 28px; }
 
-  .site-nav {
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: flex-start;
-  }
+  /* Hero spacing tighter on phones */
+  .hero { padding: 36px 0 20px; }
+  .lead { font-size: 1rem; }
 
-  .hero {
-    padding: 36px 0;
-  }
+  /* Cards: slightly smaller padding/margins to fit more content */
+  .card { padding: 20px; margin: 18px 0; }
+
+  /* Grids collapse to single column sooner */
+  .grid.two   { grid-template-columns: 1fr; }
+  .grid.three { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+
+  /* CTAs: easy to tap, full width if there are ≥2 buttons */
+  .cta-row { justify-content: stretch; }
+  .cta-row .cta { flex: 1 1 46%; text-align: center; }
+  .cta-row .cta:nth-child(3n) { flex-basis: 100%; } /* third button wraps nicely */
+
+  /* Lists: a little more breathing room */
+  .list-clean { padding-left: 18px; }
+  .list-clean li { margin: 5px 0; }
+
+  /* Footer spacing */
+  .site-footer { padding: 24px 0; }
+}
+
+/* Ultra-small phones */
+@media (max-width: 380px) {
+  .wrap { padding: 0 14px; }
+  .site-nav { gap: 6px; }
+  .cta-row .cta { flex-basis: 100%; }
 }
