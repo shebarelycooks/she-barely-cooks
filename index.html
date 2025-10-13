@@ -3,27 +3,80 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kitchen Rules First — She Barely Cooks</title>
+  <title>She Barely Cooks — Kitchen Rules First</title>
   <meta name="description" content="Maternal. Quiet. In control. Tribute before dinner. You may watch while I stir." />
-  <meta property="og:title" content="Kitchen Rules First — She Barely Cooks" />
+  <meta property="og:title" content="She Barely Cooks — Kitchen Rules First" />
   <meta property="og:description" content="Maternal. Quiet. In control. Tribute before dinner. You may watch while I stir." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://example.github.io/she-barely-cooks/" />
+  <meta property="og:url" content="https://<your-username>.github.io/she-barely-cooks/" />
+  <meta property="og:image" content="assets/img/she-barely-cooks-logo.png" />
   <meta name="theme-color" content="#c08a5a" />
   <link rel="icon" href="/favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css?v=5" />
+
+  <!-- Page-specific sugar without touching your main CSS -->
+  <style>
+    /* 1) Visual rhythm: soft site-wide background gradient */
+    body {
+      background:
+        linear-gradient(180deg, #faf7f2 0%, #fffaf6 100%);
+    }
+
+    /* Keep your hero halo */
+    .hero-wrap {
+      background: radial-gradient(1200px 500px at 50% -10%, #fff3e7 0%, rgba(255,255,255,0) 60%);
+      border-bottom: 1px solid var(--soft);
+    }
+
+    .badges { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:14px; }
+    .badge { font-size:12px; padding:6px 10px; border:1px solid var(--soft); border-radius:999px; background:#fff; }
+    .section-head { display:flex; align-items:flex-end; justify-content:space-between; gap:12px; }
+    .section-head h2 { margin:0; font-family:"Playfair Display",serif; }
+    .muted { opacity:.8; font-size:.95rem; }
+    .list-clean { list-style:none; padding:0; margin:10px 0 0; }
+    .list-clean li { margin:8px 0; }
+    .kicker { text-transform:uppercase; letter-spacing:.12em; font-size:.75rem; opacity:.7; }
+    .row { display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
+    .mini { font-size:.9rem; }
+    .note-inline { background:#fff; border:1px solid var(--soft); border-radius:10px; padding:8px 12px; display:inline-block; }
+    .pill { display:inline-block; padding:6px 10px; border-radius:999px; background:#fff9f4; border:1px solid var(--soft); font-size:.8rem; }
+    .grid-auto { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+    .center { text-align:center; }
+
+    /* 2) Microinteractions + 3) Slow fade-in for each card */
+    .card {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeUp 0.7s ease forwards;
+      will-change: transform, opacity;
+    }
+    .card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Footer signature line */
+    .signature-line {
+      font-style: italic;
+      opacity: .8;
+      margin: 8px 0 0;
+    }
+  </style>
 </head>
 <body>
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="index.html">
-  <img src="assets/img/she-barely-cooks-logo.png" alt="She Barely Cooks logo" class="logo">
-  <span>She Barely Cooks</span>
-</a>
+      <img src="assets/img/she-barely-cooks-logo.png" alt="She Barely Cooks logo" class="logo">
+      <span>She Barely Cooks</span>
+    </a>
     <nav class="site-nav">
-      <a href="index.html">Home</a>
+      <a href="index.html" aria-current="page">Home</a>
       <a href="rules.html">Rules</a>
       <a href="tributes.html">Tributes</a>
       <a href="tasks.html">Tasks</a>
@@ -35,38 +88,181 @@
     </nav>
   </div>
 </header>
+
+<!-- HERO -->
+<section class="hero-wrap">
+  <div class="wrap hero">
+    <p class="kicker">Maternal • Quiet • In Control</p>
+    <h1>Tribute before dinner. You may watch while I stir.</h1>
+    <p class="lead">A warm, disciplined space where obedience is routine, attention is earned, and the kitchen is my throne.</p>
+    <p class="cta-row">
+      <a class="cta fill" href="tributes.html">Enter the Kitchen</a>
+      <a class="cta" href="rules.html">Read the Rules</a>
+      <a class="cta" href="consent.html">Consent &amp; Safety</a>
+    </p>
+    <div class="badges">
+      <span class="badge">18+ Only</span>
+      <span class="badge">Consent First</span>
+      <span class="badge">Voluntary Tributes</span>
+      <span class="badge">Calm Dominance</span>
+    </div>
+  </div>
+</section>
+
 <main class="wrap">
 
-  <section class="hero card">
-    <h1>Kitchen Rules First</h1>
-    <p class="lead">Maternal. Quiet. In control. Tribute before dinner. You may watch while I stir.</p>
-    <div class="cta-row">
-      <a class="cta fill" href="tributes.html">Tribute</a>
-      <a class="cta" href="rules.html">Read the Rules</a>
-      <a class="cta" href="notes.html">Kitchen Notes</a>
+  <!-- WEEKLY RHYTHM -->
+  <section class="card">
+    <div class="section-head">
+      <h2>Weekly Rhythm</h2>
+      <span class="muted">Structure earns attention.</span>
+    </div>
+    <div class="row">
+      <div class="card mini">
+        <h3>Sunday Table Set</h3>
+        <p class="muted">Tribute by <strong>6 PM (your time)</strong>. Then you receive tasks.</p>
+        <a class="cta" href="tasks.html">View Tasks</a>
+      </div>
+      <div class="card mini">
+        <h3>Quiet While I Stir</h3>
+        <p class="muted">Practice silence and patience. Report your lesson learned.</p>
+        <span class="pill">Discipline</span>
+      </div>
+      <div class="card mini">
+        <h3>Friday Dessert</h3>
+        <p class="muted">Close the week properly. Public praise for the best behavior.</p>
+        <a class="cta" href="leaderboard.html">See Leaderboard</a>
+      </div>
     </div>
   </section>
 
-  <section class="grid two">
-    <div class="card">
-      <h2>This is My Kitchen</h2>
-      <p>I nourish, I teach, and I discipline—on my schedule. You’ll follow the ritual, you’ll be quiet while I cook, and you’ll earn my attention.</p>
+  <!-- TRIBUTES PREVIEW (from JSON) -->
+  <section class="card">
+    <div class="section-head">
+      <h2>Choose Your Place</h2>
+      <a class="cta" href="tributes.html">All Tiers</a>
     </div>
-    <div class="card">
-      <h2>Weekly Rhythm</h2>
-      <ul>
-        <li><strong>Sunday Table Set:</strong> Tribute by 6pm. Then you get your tasks.</li>
-        <li><strong>Friday Dessert:</strong> Close the week properly. Public praise for the best behavior.</li>
-      </ul>
+    <div id="tiers-preview" class="grid-auto"></div>
+    <p class="muted mini">All tributes are <strong>voluntary gifts</strong> within a consensual dynamic.</p>
+  </section>
+
+  <!-- TASKS PREVIEW (from JSON) -->
+  <section class="card">
+    <div class="section-head">
+      <h2>This Week’s Tasks</h2>
+      <a class="cta" href="tasks.html">View All</a>
     </div>
+    <div id="tasks-preview" class="grid-auto"></div>
+  </section>
+
+  <!-- ABOUT / BRAND PROMISE -->
+  <section class="card">
+    <div class="section-head">
+      <h2>This Is My Kitchen</h2>
+      <span class="muted">Maternal dominance, steady rituals, calm authority.</span>
+    </div>
+    <div class="grid two">
+      <div>
+        <p>I nourish, I teach, and I discipline—on my schedule. You’ll follow the ritual, sit quietly while I cook, and earn attention through routine obedience.</p>
+        <ul class="list-clean">
+          <li>• Clear rules, warm tone, firm boundaries</li>
+          <li>• Weekly structure that builds devotion</li>
+          <li>• Subtle, elegant aesthetics—apron, hands, copper, steam</li>
+        </ul>
+      </div>
+      <div>
+        <p class="note-inline">Consent and safety are non-negotiable. Tributes are gifts—never obligations.</p>
+        <p class="muted">New here? Start with the rules, then introduce yourself properly.</p>
+        <p class="cta-row">
+          <a class="cta" href="rules.html">Kitchen Rules</a>
+          <a class="cta fill" href="tributes.html">Begin</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL / NEWSLETTER -->
+  <section class="card center">
+    <p class="kicker">Stay in the Loop</p>
+    <h2>Kitchen Notes & Quiet Announcements</h2>
+    <p class="lead">Short recipes, obedience reminders, and praise—posted weekly.</p>
+    <p class="cta-row">
+      <a class="cta" href="notes.html">Read Notes</a>
+      <a class="cta" href="https://buttondown.email/" target="_blank" rel="noopener">Join Newsletter</a>
+    </p>
   </section>
 
 </main>
+
 <footer class="site-footer">
   <div class="wrap">
-    <p>© She Barely Cooks — Consent first. Discipline second. • <a href="privacy.html">Privacy & Terms</a></p>
+    <p class="signature-line">“Obedience tastes better warm.” — <em>She Barely Cooks</em></p>
+    <p>© She Barely Cooks — Consent first. Discipline second. • <a href="privacy.html">Privacy &amp; Terms</a></p>
   </div>
 </footer>
-<script src="assets/js/app.js"></script>
+
+<!-- Lightweight preview + animation accent -->
+<script>
+async function getJSON(p){
+  try { const r = await fetch(p, {cache:'no-store'}); if(!r.ok) throw 0; return await r.json(); }
+  catch(e){ return null; }
+}
+
+function el(t,a={},c=[]){
+  const n=document.createElement(t);
+  for(const[k,v] of Object.entries(a)){
+    if(k==='class') n.className=v;
+    else if(k==='html') n.innerHTML=v;
+    else n.setAttribute(k,v);
+  }
+  for(const x of c){ n.appendChild(typeof x==='string'?document.createTextNode(x):x); }
+  return n;
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  // Animation accent: cascade card animations
+  const allCards = Array.from(document.querySelectorAll('.card'));
+  allCards.forEach((el, i) => { el.style.animationDelay = (i * 0.12) + 's'; });
+
+  // Tiers preview (first 3)
+  const tiersBox = document.getElementById('tiers-preview');
+  if(tiersBox){
+    const tiers = await getJSON('data/tiers.json');
+    if(Array.isArray(tiers)){
+      tiers.slice(0,3).forEach(t=>{
+        tiersBox.appendChild(
+          el('div',{class:'card mini'},[
+            el('h3',{},[t.name||'Tier']),
+            el('p',{class:'muted'},[t.description||'']),
+            el('ul',{class:'list-clean'}, (t.perks||[]).slice(0,3).map(p=>el('li',{},['• ',p]))),
+            el('p',{},[ el('a',{class:'cta',href:t.cta||'tributes.html'},['Enter']) ])
+          ])
+        );
+      });
+    } else {
+      tiersBox.appendChild(el('p',{class:'muted'},['Tiers coming soon.']));
+    }
+  }
+
+  // Tasks preview (first 3)
+  const tasksBox = document.getElementById('tasks-preview');
+  if(tasksBox){
+    const tasks = await getJSON('data/tasks.json');
+    if(Array.isArray(tasks)){
+      tasks.slice(0,3).forEach(task=>{
+        tasksBox.appendChild(
+          el('div',{class:'card mini'},[
+            el('h3',{},[task.title||'Task']),
+            el('p',{class:'muted'},[task.description||'']),
+            el('p',{class:'mini'},[`Due: ${task.due||'—'}`]),
+          ])
+        );
+      });
+    } else {
+      tasksBox.appendChild(el('p',{class:'muted'},['Tasks will post on Sunday.']));
+    }
+  }
+});
+</script>
 </body>
 </html>
