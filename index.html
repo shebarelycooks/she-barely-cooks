@@ -20,8 +20,7 @@
   <style>
     /* 1) Visual rhythm: soft site-wide background gradient */
     body {
-      background:
-        linear-gradient(180deg, #faf7f2 0%, #fffaf6 100%);
+      background: linear-gradient(180deg, #faf7f2 0%, #fffaf6 100%);
     }
 
     /* Keep your hero halo */
@@ -35,8 +34,6 @@
     .section-head { display:flex; align-items:flex-end; justify-content:space-between; gap:12px; }
     .section-head h2 { margin:0; font-family:"Playfair Display",serif; }
     .muted { opacity:.8; font-size:.95rem; }
-    .list-clean { list-style:none; padding:0; margin:10px 0 0; }
-    .list-clean li { margin:8px 0; }
     .kicker { text-transform:uppercase; letter-spacing:.12em; font-size:.75rem; opacity:.7; }
     .row { display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
     .mini { font-size:.9rem; }
@@ -44,6 +41,11 @@
     .pill { display:inline-block; padding:6px 10px; border-radius:999px; background:#fff9f4; border:1px solid var(--soft); font-size:.8rem; }
     .grid-auto { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
     .center { text-align:center; }
+
+    /* Use your global list style (bullets from CSS, not manual chars) */
+    .list-clean { list-style: disc; list-style-position: outside; padding-left: 22px; margin: 10px 0 0; }
+    .list-clean li { margin: 6px 0; line-height: 1.6; }
+    .list-clean li::marker { color: var(--accent); }
 
     /* 2) Microinteractions + 3) Slow fade-in for each card */
     .card {
@@ -123,18 +125,24 @@
         <p class="muted">Tribute by <strong>6 PM CST</strong>. Then you receive tasks.</p>
         <a class="cta" href="tasks.html">View Tasks</a>
       </div>
+
       <div class="card mini">
         <h3>Quiet While I Stir</h3>
-        <ul>• Worship me sweetly</ul>
-        <ul>• Tribute is the secret ingredient</ul>
-        <ul>• Discipline is the flavor</ul>
-        <p class="muted">Practice silence and patience. Report your lesson learned.</p>
+        <ul class="list-clean">
+          <li>Worship me sweetly</li>
+          <li>Tribute is the secret ingredient</li>
+          <li>Discipline is the flavor</li>
+        </ul>
         <span class="pill">Discipline</span>
       </div>
+
       <div class="card mini">
         <h3>Friday Dessert</h3>
-        <p class="muted">Close the week properly with dessert and <b>Miss Dee's Weekly Leaderboard!</b>. Public praise for <b>Miss Dee's Good Boy of the Week Award!</b><br>
-        <ul>Certificate from Miss Dee included for my weekly best!</ul></p>
+        <p class="muted">Close the week properly with dessert and <b>Miss Dee's Weekly Leaderboard!</b></p>
+        <ul class="list-clean">
+          <li>Public praise for <b>Miss Dee's Good Boy of the Week Award</b></li>
+          <li>Certificate from Miss Dee for the weekly best</li>
+        </ul>
         <a class="cta" href="leaderboard.html">See Miss Dee's Leaderboard</a>
       </div>
     </div>
@@ -169,9 +177,9 @@
       <div>
         <p>I nourish, I teach, and I discipline—on my schedule. You’ll follow the ritual, sit quietly while I cook, and earn attention through routine obedience.</p>
         <ul class="list-clean">
-          <li>• Clear rules, warm tone, firm boundaries</li>
-          <li>• Weekly structure that builds devotion</li>
-          <li>• Subtle, elegant aesthetics—apron, hands, copper, steam</li>
+          <li>Clear rules, warm tone, firm boundaries</li>
+          <li>Weekly structure that builds devotion</li>
+          <li>Subtle, elegant aesthetics—apron, hands, copper, steam</li>
         </ul>
       </div>
       <div>
@@ -228,6 +236,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const allCards = Array.from(document.querySelectorAll('.card'));
   allCards.forEach((el, i) => { el.style.animationDelay = (i * 0.12) + 's'; });
 
+  const clean = s => String(s).replace(/^[\s\u2022•-]+/, '');
+
   // Tiers preview (first 3)
   const tiersBox = document.getElementById('tiers-preview');
   if(tiersBox){
@@ -238,7 +248,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           el('div',{class:'card mini'},[
             el('h3',{},[t.name||'Tier']),
             el('p',{class:'muted'},[t.description||'']),
-            el('ul',{class:'list-clean'}, (t.perks||[]).slice(0,3).map(p=>el('li',{},['• ',p]))),
+            el('ul',{class:'list-clean'}, (t.perks||[]).slice(0,3).map(p=>el('li',{},[ clean(p) ]))),
             el('p',{},[ el('a',{class:'cta',href:t.cta||'tributes.html'},['Enter']) ])
           ])
         );
@@ -266,6 +276,189 @@ document.addEventListener('DOMContentLoaded', async () => {
       tasksBox.appendChild(el('p',{class:'muted'},['Tasks will post on Sunday.']));
     }
   }
+});
+</script>
+</body>
+</html>
+✅ tributes.html (fixed)
+Removed the duplicate script.
+
+Stopped adding manual '• ' in JS.
+
+Kept bullets purely via CSS + sanitized JSON strings.
+
+html
+Copy code
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tributes — She Barely Cooks</title>
+  <meta name="description" content="Maternal. Quiet. In control. Tribute before dinner. You may watch while I stir." />
+  <meta property="og:title" content="Tributes — She Barely Cooks" />
+  <meta property="og:description" content="Maternal. Quiet. In control. Tribute before dinner. You may watch while I stir." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.github.io/she-barely-cooks/" />
+  <meta name="theme-color" content="#c08a5a" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=5" />
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="assets/img/she-barely-cooks-logo.png" alt="She Barely Cooks logo" class="logo">
+      <span>She Barely Cooks</span>
+    </a>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="rules.html">Rules</a>
+      <a href="tributes.html">Tributes</a>
+      <a href="tasks.html">Tasks</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="notes.html">Kitchen Notes</a>
+      <a href="faq.html">FAQ</a>
+      <a href="consent.html">Consent</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="card" id="tiers">
+    <div class="section-head">
+      <h2>Tribute Tiers</h2>
+      <span class="muted">You don’t buy your place — you earn it.</span>
+    </div>
+    <div id="tiers-grid" class="grid two"></div>
+    <p class="muted mini">All tributes are voluntary gifts within a consensual dynamic.</p>
+  </section>
+
+  <section class="card">
+    <div class="section-head">
+      <h2>Rank Calculator</h2>
+      <span class="muted">Track your lifetime devotion and see your standing.</span>
+    </div>
+    <div class="grid two">
+      <div>
+        <label for="lifetimeTotal" class="muted mini">Enter your lifetime total (USD)</label>
+        <input id="lifetimeTotal" type="number" min="0" step="1" placeholder="e.g. 324" style="width:100%;padding:12px;border:1px solid var(--soft);border-radius:10px;background:#fff;">
+        <p id="rankOutput" class="note" style="margin-top:12px;">—</p>
+        <div aria-label="progress" style="height:10px;border-radius:999px;background:#f2e9df;border:1px solid var(--soft);overflow:hidden;">
+          <div id="rankBar" style="height:100%;width:0%;background:var(--accent);"></div>
+        </div>
+        <p id="nextStep" class="mini muted" style="margin-top:8px;">—</p>
+      </div>
+      <div>
+        <p class="note-inline">How it works</p>
+        <ul class="list-clean">
+          <li>Each offering adds to your <strong>lifetime total</strong>.</li>
+          <li>Crossing thresholds <strong>elevates your rank</strong>.</li>
+          <li>Recognition is quiet, consistent, and earned.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© She Barely Cooks — Consent first. Discipline second. • <a href="privacy.html">Privacy &amp; Terms</a></p>
+  </div>
+</footer>
+
+<script>
+async function getJSON(p){ 
+  try{ 
+    const r=await fetch(p,{cache:'no-store'}); 
+    if(!r.ok) throw 0; 
+    return await r.json(); 
+  }catch(e){ 
+    return null; 
+  } 
+}
+
+function el(t,a={},c=[]){
+  const n=document.createElement(t); 
+  for(const[k,v] of Object.entries(a)){ 
+    if(k==='class') n.className=v; 
+    else if(k==='html') n.innerHTML=v; 
+    else n.setAttribute(k,v); 
+  } 
+  for(const x of c){ 
+    n.appendChild(typeof x==='string'?document.createTextNode(x):x); 
+  } 
+  return n;
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  // Render tiers
+  const grid = document.getElementById('tiers-grid');
+  const tiers = await getJSON('data/tiers.json');
+
+  const clean = s => String(s).replace(/^[\s\u2022•-]+/, '');
+
+  if(grid && Array.isArray(tiers)){
+    tiers.forEach(t=>{
+      const perksList = el('ul',{class:'list-clean'}, (t.perks||[]).map(p=>el('li',{},[ clean(p) ])));
+      grid.appendChild(
+        el('div',{class:'card'},[
+          el('h3',{},[t.token ? t.token+' ' : '', t.name]),
+          el('p',{class:'muted'},[t.description||'']),
+          perksList,
+          el('p',{class:'mini muted'},[
+            typeof t.max === 'number'
+              ? `Threshold: $${t.min}–$${t.max}`
+              : `Threshold: $${t.min}+`
+          ])
+        ])
+      );
+    });
+  } else if(grid) {
+    grid.appendChild(el('p',{class:'muted'},['Tiers will post soon.']));
+  }
+
+  // Rank calculator
+  const input = document.getElementById('lifetimeTotal');
+  const out = document.getElementById('rankOutput');
+  const bar = document.getElementById('rankBar');
+  const next = document.getElementById('nextStep');
+
+  function computeRank(val, tiers){
+    let current = tiers[0], nextTier = null;
+    for(let i=0;i<tiers.length;i++){
+      const t = tiers[i];
+      const max = (typeof t.max === 'number') ? t.max : Infinity;
+      if(val >= t.min && val <= max){ current = t; nextTier = tiers[i+1] || null; break; }
+      if(val >= t.min && max === Infinity){ current = t; nextTier = null; break; }
+    }
+    return {current, nextTier};
+  }
+
+  function update(){
+    const val = Math.max(0, Number(input.value||0));
+    if(!Array.isArray(tiers)) return;
+    const {current, nextTier} = computeRank(val, tiers);
+
+    out.innerHTML = `<strong>Current Rank:</strong> ${current.token? current.token+' ' : ''}${current.name}`;
+
+    if(nextTier){
+      const toGo = Math.max(0, nextTier.min - val);
+      const progress = Math.max(0, Math.min(1, (val - current.min) / ((current.max ?? val) - current.min || 1)));
+      bar.style.width = (progress*100).toFixed(1) + '%';
+      next.textContent = `Next: ${nextTier.name} at $${nextTier.min} (you’re $${toGo} away).`;
+    } else {
+      bar.style.width = '100%';
+      next.textContent = `You have reached the highest rank. Devotion recognized.`;
+    }
+  }
+
+  if(input){ input.addEventListener('input', update); update(); }
 });
 </script>
 </body>
