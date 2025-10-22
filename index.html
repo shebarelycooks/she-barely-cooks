@@ -161,14 +161,44 @@
   </section>
 
   <!-- TRIBUTES PREVIEW (from JSON) -->
+<main class="wrap">
+
+  <section class="card" id="tiers">
+    <div class="section-head">
+      <h2>Tribute Tiers</h2>
+      <span class="muted">You don’t buy your place — you earn it.</span>
+    </div>
+    <div id="tiers-grid" class="grid two"></div>
+    <p class="muted mini">All tributes are voluntary gifts within a consensual dynamic.</p>
+  </section>
+
   <section class="card">
     <div class="section-head">
-      <h2>Choose Your Place</h2>
-      <a class="cta" href="tributes.html">All Tiers</a>
+      <h2>Rank Calculator</h2>
+      <span class="muted">Track your lifetime devotion and see your standing.</span>
     </div>
-    <div id="tiers-preview" class="grid-auto"></div>
-    <p class="muted mini">All tributes are <strong>voluntary gifts</strong> within a consensual dynamic.</p>
+    <div class="grid two">
+      <div>
+        <label for="lifetimeTotal" class="muted mini">Enter your lifetime total (USD)</label>
+        <input id="lifetimeTotal" type="number" min="0" step="1" placeholder="e.g. 324" style="width:100%;padding:12px;border:1px solid var(--soft);border-radius:10px;background:#fff;">
+        <p id="rankOutput" class="note" style="margin-top:12px;">—</p>
+        <div aria-label="progress" style="height:10px;border-radius:999px;background:#f2e9df;border:1px solid var(--soft);overflow:hidden;">
+          <div id="rankBar" style="height:100%;width:0%;background:var(--accent);"></div>
+        </div>
+        <p id="nextStep" class="mini muted" style="margin-top:8px;">—</p>
+      </div>
+      <div>
+        <p class="note-inline">How it works</p>
+        <ul class="list-clean">
+          <li>Each offering adds to your <strong>lifetime total</strong>.</li>
+          <li>Crossing thresholds <strong>elevates your rank</strong>.</li>
+          <li>Recognition is quiet, consistent, and earned.</li>
+        </ul>
+      </div>
+    </div>
   </section>
+
+</main>
 
   <!-- TASKS PREVIEW (from JSON) -->
   <section class="card">
@@ -260,45 +290,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 </script>
 </body>
-
-<main class="wrap">
-
-  <section class="card" id="tiers">
-    <div class="section-head">
-      <h2>Tribute Tiers</h2>
-      <span class="muted">You don’t buy your place — you earn it.</span>
-    </div>
-    <div id="tiers-grid" class="grid two"></div>
-    <p class="muted mini">All tributes are voluntary gifts within a consensual dynamic.</p>
-  </section>
-
-  <section class="card">
-    <div class="section-head">
-      <h2>Rank Calculator</h2>
-      <span class="muted">Track your lifetime devotion and see your standing.</span>
-    </div>
-    <div class="grid two">
-      <div>
-        <label for="lifetimeTotal" class="muted mini">Enter your lifetime total (USD)</label>
-        <input id="lifetimeTotal" type="number" min="0" step="1" placeholder="e.g. 324" style="width:100%;padding:12px;border:1px solid var(--soft);border-radius:10px;background:#fff;">
-        <p id="rankOutput" class="note" style="margin-top:12px;">—</p>
-        <div aria-label="progress" style="height:10px;border-radius:999px;background:#f2e9df;border:1px solid var(--soft);overflow:hidden;">
-          <div id="rankBar" style="height:100%;width:0%;background:var(--accent);"></div>
-        </div>
-        <p id="nextStep" class="mini muted" style="margin-top:8px;">—</p>
-      </div>
-      <div>
-        <p class="note-inline">How it works</p>
-        <ul class="list-clean">
-          <li>Each offering adds to your <strong>lifetime total</strong>.</li>
-          <li>Crossing thresholds <strong>elevates your rank</strong>.</li>
-          <li>Recognition is quiet, consistent, and earned.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-</main>
 
 <footer class="site-footer">
   <div class="wrap">
