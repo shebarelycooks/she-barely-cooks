@@ -45,9 +45,10 @@
     "token": "💍",
     "description": "You’ve been marked — favored and trusted.",
     "perks": [
-      "Private channel access",
       "1 custom command/week",
-      "Reserved seat in monthly quiet stream"
+      "2 weekly tasks",
+      "Priority message window",
+      "The Annointed Sub Certificate with Recognition"
     ],
     "cta": "tributes.html"
   },
@@ -57,8 +58,9 @@
     "token": "⛓️",
     "description": "You exist only to serve the divine will that stirs you.",
     "perks": [
-      "Priority recognition",
+      "Priority Public recognition",
       "Personal ritual (monthly)",
+      "Personalized The Santified Sub Certificate",
       "Permanent entry in my private ledger"
     ],
     "cta": "tributes.html"
