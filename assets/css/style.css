@@ -323,3 +323,21 @@ img, video { max-width: 100%; height: auto; }
 .wrap {
   max-width: 1240px;          /* was 1100px */
 }
+/* Full-width form (edge-to-edge) */
+.form-card.form-card--full {
+  max-width: none;     /* remove the cap */
+  width: 100%;
+  margin: 0;           /* no outer margin */
+  border-radius: 0;    /* flush to edges */
+  border-left: none;
+  border-right: none;
+  box-shadow: none;
+  padding: clamp(24px, 4vw, 56px); /* responsive inner padding */
+}
+
+/* Keep consent card contained inside the now-wide form */
+.form-card.form-card--full .important-consent {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
