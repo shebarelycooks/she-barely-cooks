@@ -133,6 +133,29 @@ a:focus-visible {
 /* ------------------ */
 /* CLEAN LIST STYLE */
 /* ------------------ */
+.important-box {
+  background-color: #1e1e1e;      /* dark gray background */
+  color: #f5f5f5;                 /* soft white text */
+  border-radius: 10px;            /* rounded corners */
+  padding: 2rem;                  /* inner spacing */
+  margin: 2rem auto;              /* center horizontally */
+  max-width: 900px;               /* readable width */
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* subtle border */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);  /* soft glow */
+}
+
+.important-box strong {
+  color: #ff6961; /* soft red accent for warning/emphasis */
+}
+
+.important-box em {
+  color: #9bbcf9; /* light blue for emphasis (like “will”) */
+  font-style: normal;
+}
+
 .list-clean {
   list-style-type: disc;
   list-style-position: outside;
