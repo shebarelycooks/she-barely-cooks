@@ -84,13 +84,14 @@
   </div>
 </header>
 <div class="form-card">
-  <form action="https://formsubmit.co/shebarelycooks@gmail.com" method="POST">
-    <!-- Required notice + checkbox -->
-<div class="important-consent">
-  <input type="checkbox" id="app-consent" name="app_consented" required>
-  <label for="app-consent">
-    <span class="title">⚠️ <strong>Important:</strong> Please read carefully.</span>
-    <span class="text">
+  <form action="https://formsubmit.co/shebarelycooks@gmail.com" method="POST"> <!-- Required notice + checkbox -->
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <div class="important-consent">
+  <label>
+    <input type="checkbox" name="consent_acknowledged" required>
+    <span class="content">
+      <span class="title">⚠️ <strong>Important:</strong> Please read carefully.</span><br><br>
       To have your application considered, you must complete the following form and include a tribute.
       Non-compliance will result in automatic denial. If your application meets the requirements to
       initiate our relationship, you will be instructed to draft a contract outlining your commitment,
@@ -102,8 +103,6 @@
     </span>
   </label>
 </div>
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
     <button type="submit">Send</button>
   </form>
 </div>

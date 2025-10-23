@@ -170,38 +170,48 @@ a:focus-visible {
 }
 
 /* Focus ring for accessibility */
+.important-consent {
+  background: #1e1e1e;
+  color: #f5f5f5;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  margin: 2rem 0;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.important-consent label {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.important-consent input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  margin-top: 6px;
+  border-radius: 8px;
+  border: 2px solid rgba(255,255,255,0.4);
+  background: #2b2b2b;
+  cursor: pointer;
+  accent-color: #b87a4b; /* modern browser support */
+}
+
 .important-consent input[type="checkbox"]:focus-visible {
-  outline: 3px solid #b87a4b;      /* your accent */
+  outline: 3px solid #b87a4b;
   outline-offset: 2px;
 }
 
-/* Checked state */
-.important-consent input[type="checkbox"]:checked {
-  background: #b87a4b;             /* your brown accent */
-  border-color: #b87a4b;
-}
-.important-consent input[type="checkbox"]:checked::after {
-  content: "✓";
-  position: absolute;
-  left: 6px;
-  top: -1px;
-  font-size: 20px;
-  color: #fff;
-  font-weight: 800;
+.important-consent .title strong {
+  color: #ff6961;
 }
 
-/* Label + text styling */
-.important-consent label {
-  cursor: pointer;
-  display: grid;
-  gap: 0.9rem;
-}
-.important-consent .title {
-  font-size: 1.15rem;
-}
-.important-consent .title strong { color: #ff6b6b; }   /* warning red */
-.important-consent .text em {
-  color: #9bbcf9;                                     /* subtle blue emphasis */
+.important-consent em {
+  color: #9bbcf9;
   font-style: normal;
 }
 .list-clean {
