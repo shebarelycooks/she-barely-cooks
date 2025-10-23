@@ -179,11 +179,11 @@
 
           <div class="form-grid">
             <ol>
-              <li><p>Are you 18+ years of age?</p></li>
-              <p>If you answer <em>No</em>, you will no longer be qualified to continue the application.</p>
-
-              <span class="option-line"><input type="radio" name="age_confirm" value="yes" required> <label>Yes</label></span>
-              <span class="option-line"><input type="radio" name="age_confirm" value="no"> <label>No</label></span>
+              <li class="q">
+              <h3 class="q-title">Are you 18+ years of age?</h3>
+              <p class="q-sub">If you answer <em>No</em>, you will no longer be qualified to continue the application.</p>
+              <label class="option"><input type="radio" name="age_confirm" value="yes" required> Yes</label>
+              <label class="option"><input type="radio" name="age_confirm" value="no"> No</label></li>
               <li><label for="name">First Name Only or Pseudonym</label></li>
               <input id="name" name="name" type="text" placeholder="First Name/Pseudonym Only" required>
               <li><label for="email">Your Email</label></li>
