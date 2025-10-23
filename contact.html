@@ -181,8 +181,9 @@
             <ol>
               <li><p>Are you 18+ years of age?</p></li>
               <p>If you answer <em>No</em>, you will no longer be qualified to continue the application.</p>
-              <input type="radio" name="yes" value="yes" required /> Yes
-              <input type="radio" name="no" value="no" required /> No
+
+              <span class="option-line"><input type="radio" name="age_confirm" value="yes" required> <label>Yes</label></span>
+              <span class="option-line"><input type="radio" name="age_confirm" value="no"> <label>No</label></span>
               <li><label for="name">First Name Only or Pseudonym</label></li>
               <input id="name" name="name" type="text" placeholder="First Name/Pseudonym Only" required>
               <li><label for="email">Your Email</label></li>
@@ -241,8 +242,8 @@ What are you hoping to achieve from this dynamic? For example, are you seeking s
               <input id="aftercare" name="aftercare" type="text" required>
               <li><label name="free_will">
 Do you agree that you are acting upon your own free will and are not being coerced into applying for Consensual Financial Domination consideration with Miss Dee.</label></li>
-              <input type="radio" name="free_will_yes" value="yes" required /> Yes
-              <input type="radio" name="free_will_no" value="no" required /> No
+              <span class="option-line"><input type="radio" name="free_will" value="yes" required> <label>Yes</label></span>
+              <span class="option-line"><input type="radio" name="free_will" value="no"> <label>No</label></span>
               <li><label for="signature">Digital Signature</label></li>
               <input id="signature" name="signature" type="text" placeholder="Type your full name as a signature" required>
               <p class="note">By typing your name, you acknowledge this serves as your digital signature.</p>

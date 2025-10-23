@@ -341,3 +341,95 @@ img, video { max-width: 100%; height: auto; }
   max-width: 100%;
   box-sizing: border-box;
 }
+/* --- Overall spacing inside the form --- */
+.contact-form ol { 
+  margin: 0; 
+  padding: 0; 
+  list-style: decimal;         /* keep your numbering */
+  list-style-position: inside; 
+}
+.contact-form ol > * { 
+  margin-bottom: 0.85rem; 
+}
+
+/* Question titles (the numbered <li>) */
+.contact-form ol > li {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin-top: 1.1rem;
+}
+
+/* Subtext lines (your explanatory <p> lines inside the OL) */
+.contact-form ol > p {
+  margin-left: 1.6rem;          /* indent under the number */
+  font-style: italic;
+  color: #7a7068;
+}
+
+/* Inputs/selects within the list */
+.contact-form ol input[type="text"],
+.contact-form ol input[type="email"],
+.contact-form ol input[type="date"],
+.contact-form ol select {
+  width: 100%;
+  padding: .9rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #ddd0c6;
+  background: #fffaf8;
+  color: var(--ink);
+  font-size: 1rem;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.contact-form ol input:focus,
+.contact-form ol select:focus {
+  outline: none;
+  border-color: var(--focus);
+  box-shadow: 0 0 0 3px rgba(184,119,66,.18);
+}
+
+/* Radios & checkboxes — spacing + native accent color */
+.contact-form ol input[type="radio"],
+.contact-form ol input[type="checkbox"] {
+  accent-color: var(--accent);
+  transform: translateY(2px);
+  margin-right: .5rem;
+}
+.contact-form ol input[type="radio"] + label,
+.contact-form ol input[type="checkbox"] + label {
+  margin-right: 1rem;
+}
+
+/* When options are put on separate lines (you used <br>) */
+.contact-form ol .option-line {
+  display: block;
+  margin-left: 1.6rem;          /* align with subtext indent */
+  margin-bottom: .45rem;
+}
+
+/* Final instructions (dark card) */
+.final-instructions{
+  background: #1f1f1f;
+  color: #f1f1f1;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+  padding: 1.6rem 1.8rem;
+  margin: 1.2rem 0 1.6rem;
+  line-height: 1.8;
+  font-size: 1.02rem;
+}
+.final-instructions p{ margin: .85rem 0; }
+.final-instructions strong{ color: #ff6b6b; }
+.final-instructions a{ color: #9bbcf9; text-decoration: underline; }
+.final-instructions a:hover{ color: var(--accent); }
+.final-instructions em{ color: #d1cfcf; }
+.final-instructions .amount{ color: #ffd27f; }
+
+/* Keep the dark consent card visually consistent above the button */
+.important-consent { margin-top: 1.2rem; }
+
+/* Make radio “Yes / No” rows breathe on small screens */
+@media (max-width: 560px){
+  .contact-form ol > p { margin-left: .75rem; }
+}
