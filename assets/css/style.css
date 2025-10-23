@@ -310,3 +310,16 @@ img, video { max-width: 100%; height: auto; }
   .site-nav { gap: 6px; }
   .cta-row .cta { flex-basis: 100%; }
 }
+/* === FORM WIDTH OVERRIDES === */
+.form-card {
+  max-width: 1040px;          /* was 820px */
+}
+
+/* scale a touch more on very wide screens */
+@media (min-width: 1280px) {
+  .form-card { max-width: 1120px; }
+}
+/* === PAGE CONTAINER WIDTH (optional) === */
+.wrap {
+  max-width: 1240px;          /* was 1100px */
+}
