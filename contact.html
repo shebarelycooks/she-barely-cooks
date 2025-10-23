@@ -15,113 +15,228 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css" />
   <style>
-/* Form card styling */
-.form-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 3rem auto;               /* centers it horizontally */
-  background-color: #fff;          /* white background like contact card */
-  border-radius: 16px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  width: 90%;
-  max-width: 500px;
-  padding: 2rem;
-}
+    :root{
+      --bg:#faf7f2; --ink:#1b1b1b; --accent:#c08a5a; --soft:#e7dccf; --card:#ffffff; --focus:#b87742;
+    }
+    /* Reset helpers just for the form band */
+    .contact-band * { box-sizing: border-box; }
 
-/* Form styling */
-.form-card form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+    /* ========= FULL-BLEED FORM BAND (edge-to-edge) ========= */
+    .contact-band{
+      position: relative;
+      left: 50%; right: 50%;
+      margin-left: -50vw; margin-right: -50vw;
+      width: 100vw;
+      background: transparent;                   /* set to #fff if you want a white strip */
+      padding: clamp(24px, 4vw, 56px) 0;
+    }
+    /* Inner container: remove max-width to truly span the page */
+    .contact-container{
+      max-width: none;                            /* no cap → fills the viewport width */
+      padding: 0 clamp(14px, 3.5vw, 56px);        /* responsive side padding */
+      margin: 0 auto;
+    }
 
-.form-card input {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #e2d9d3;
-  border-radius: 8px;
-  font-size: 1rem;
-  background-color: #fffaf8;
-}
+    /* ========= FORM SHELL (full width card) ========= */
+    .form-card{
+      background: var(--card);
+      border: 1px solid var(--soft);
+      border-radius: 0;                           /* flush to band edges */
+      box-shadow: 0 4px 16px rgba(0,0,0,.06);
+      width: 100%;
+      padding: clamp(20px, 3vw, 40px);
+    }
 
-.form-card button {
-  align-self: center;
-  background-color: #b87a4b;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 0.75rem 2rem;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
+    /* Page title for context */
+    .page-title{
+      font-family: "Playfair Display", serif;
+      font-weight: 600;
+      font-size: clamp(1.4rem, 1rem + 2vw, 2rem);
+      color: var(--ink);
+      margin: 0 0 14px;
+      padding: 0 clamp(14px, 3.5vw, 56px);
+    }
 
-.form-card button:hover {
-  background-color: #a56b42;
-}
+    /* ========= FORM LAYOUT ========= */
+    .contact-form{ display:flex; flex-direction:column; gap: clamp(16px,1.6vw,24px); }
+
+    .form-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(14px,1.4vw,24px);
+    }
+
+    .fgroup{ display:flex; flex-direction:column; gap:8px; }
+    .fgroup label{ font-weight:600; font-size:.95rem; color:#4b4540; }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea{
+      width: 100%;
+      padding: .95rem 1rem;
+      border-radius: 12px;
+      border: 1px solid #ddd0c6;
+      background: #fffaf8;
+      color: var(--ink);
+      font: 1rem/1.4 Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+    .contact-form textarea{ min-height: 150px; resize: vertical; }
+    .contact-form input::placeholder, .contact-form textarea::placeholder{ color:#b39f8f; }
+    .contact-form input:focus, .contact-form textarea:focus{
+      outline: none; border-color: var(--focus); box-shadow: 0 0 0 3px rgba(184,119,66,.18);
+    }
+
+    /* ========= IMPORTANT CONSENT (inside form) ========= */
+    .important-consent{
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+
+      background: #1f1f1f;
+      color: #f1f1f1;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+      padding: clamp(18px, 2vw, 28px);
+    }
+    .consent-wrap{
+      display:grid; grid-template-columns:auto 1fr; gap:14px 16px; align-items:flex-start; cursor:pointer;
+    }
+    .important-consent input[type="checkbox"]{
+      appearance:none; -webkit-appearance:none;
+      width:28px; height:28px; margin-top:4px;
+      border-radius:8px; border:2px solid rgba(255,255,255,.45);
+      background:#2b2b2b; box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+      position:relative; cursor:pointer;
+    }
+    .important-consent input[type="checkbox"]:checked{
+      background: var(--accent); border-color: var(--accent);
+    }
+    .important-consent input[type="checkbox"]:checked::after{
+      content:"✓"; color:#fff; position:absolute; left:6px; top:-1px; font-weight:800; font-size:20px;
+    }
+    .important-consent input[type="checkbox"]:focus-visible{
+      outline:3px solid var(--focus); outline-offset:2px;
+    }
+    .consent-title{ margin:0; font-weight:700; color:#e9e9e9; }
+    .consent-title strong{ color:#ff6b6b; }
+    .important-consent em{ color:#9bbcf9; font-style:normal; }
+
+    /* Actions */
+    .form-actions{ display:flex; justify-content:center; padding-top:6px; }
+    .btn-primary{
+      background: var(--accent); color:#fff; border:none; border-radius:12px;
+      padding:.95rem 2.2rem; font-weight:700; font-size:1.05rem; cursor:pointer;
+      transition: background-color .2s ease, transform .1s ease;
+    }
+    .btn-primary:hover{ background:#a56b42; }
+    .btn-primary:active{ transform: translateY(1px); }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .form-grid{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px){
+      .consent-wrap{ grid-template-columns: 1fr; }
+      .important-consent input[type="checkbox"]{ margin-top:0; }
+    }
   </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="index.html">
-      <img src="assets/img/she-barely-cooks-logo.png" alt="She Barely Cooks logo" class="logo">
-      <span>She Barely Cooks</span>
-    </a>
-    <nav class="site-nav">
-      <a href="index.html">Home</a>
-      <a href="rules.html">Rules</a>
-      <a href="tributes.html">Tributes</a>
-      <a href="tasks.html">Tasks</a>
-      <a href="leaderboard.html">Leaderboard</a>
-      <a href="notes.html">Kitchen Notes</a>
-      <a href="faq.html">FAQ</a>
-      <a href="consent.html">Consent</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
-<div class="form-card" form-card--full>
-  <form action="https://formsubmit.co/shebarelycooks@gmail.com" method="POST"> <!-- Required notice + checkbox -->
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <div class="important-consent">
-  <label>
-    <input type="checkbox" name="consent_acknowledged" required>
-    <span class="content">
-      <span class="title">⚠️ <strong>Important:</strong> Please read carefully.</span><br><br>
-      To have your application considered, you must complete the following form and include a tribute.
-      Non-compliance will result in automatic denial. If your application meets the requirements to
-      initiate our relationship, you will be instructed to draft a contract outlining your commitment,
-      which you will send to Me. Additionally, you'll need to provide an age-verified account (OF or LF).
-      If you don’t have one, please submit a selfie holding your ID, ensuring that any sensitive
-      information is obscured while your photo and date of birth are clearly visible for age verification
-      purposes. The contract <em>will not</em> be legally binding but will act as a statement of your
-      dedication. Applicants must be at least 18 years old; no exceptions will be made.
-    </span>
-  </label>
-</div>
-    <button type="submit">Send</button>
-  </form>
-</div>
-<main class="wrap">
 
-  <section class="card">
-    <h1>Contact</h1>
-    <p class="lead">Business inquiries only. Fans should use the platform messages.</p>
-    <ul>
-      <li>Email: <a href="mailto:shebarelycooks@gmail.com">shebarelycooks@gmail.com</a></li>
-    </ul>
+  <!-- Site header/nav (unchanged) -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/img/she-barely-cooks-logo.png" alt="She Barely Cooks logo" class="logo">
+        <span>She Barely Cooks</span>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="rules.html">Rules</a>
+        <a href="tributes.html">Tributes</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="notes.html">Kitchen Notes</a>
+        <a href="faq.html">FAQ</a>
+        <a href="consent.html">Consent</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- FULL-WIDTH FORM SECTION -->
+  <h1 class="page-title">Contact / Application</h1>
+  <section class="contact-band">
+    <div class="contact-container">
+      <div class="form-card">
+        <form class="contact-form" action="https://formsubmit.co/shebarelycooks@gmail.com" method="POST" novalidate>
+          <!-- FormSubmit helpers -->
+          <input type="hidden" name="_subject" value="New submission — She Barely Cooks">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+          <div class="form-grid">
+            <div class="fgroup">
+              <label for="name">Your Name</label>
+              <input id="name" name="name" type="text" placeholder="Jane Doe" required>
+            </div>
+            <div class="fgroup">
+              <label for="email">Your Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+
+          <div class="important-consent">
+            <label for="app-consent" class="consent-wrap">
+              <input id="app-consent" name="consent_acknowledged" type="checkbox" required>
+              <div class="consent-text">
+                <p class="consent-title">⚠️ <strong>Important:</strong> Please read carefully.</p>
+                <p>
+                  To have your application considered, you must complete the following form and include a tribute.
+                  Non-compliance will result in automatic denial. If your application meets the requirements to
+                  initiate our relationship, you will be instructed to draft a contract outlining your commitment,
+                  which you will send to Me. Additionally, you'll need to provide an age-verified account (OF or LF).
+                  If you don’t have one, please submit a selfie holding your ID, ensuring that any sensitive
+                  information is obscured while your photo and date of birth are clearly visible for age verification
+                  purposes. The contract <em>will not</em> be legally binding but will act as a statement of your
+                  dedication. Applicants must be at least 18 years old; no exceptions will be made.
+                </p>
+              </div>
+            </label>
+          </div>
+
+          <div class="fgroup">
+            <label for="message">Message (optional)</label>
+            <textarea id="message" name="message" rows="6" placeholder="Tell me anything I should know…"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </section>
 
-</main>
-<footer class="site-footer">
-  <div class="wrap">
-    <p>© She Barely Cooks — Consent first. Discipline second. • <a href="privacy.html">Privacy & Terms</a></p>
-  </div>
-</footer>
-<script src="assets/js/app.js"></script>
+  <!-- Optional business-only card / legacy content -->
+  <main class="wrap">
+    <section class="card">
+      <h1>Contact</h1>
+      <p class="lead">Business inquiries only. Fans should use the platform messages.</p>
+      <ul>
+        <li>Email: <a href="mailto:shebarelycooks@gmail.com">shebarelycooks@gmail.com</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© She Barely Cooks — Consent first. Discipline second. • <a href="privacy.html">Privacy &amp; Terms</a></p>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
 </body>
 </html>
