@@ -607,3 +607,10 @@ img, video { max-width: 100%; height: auto; }
   .contact-form ol > .option-line,
   .contact-form ol > .note { margin-left: 1rem; }
 }
+/* Center the big page title */
+.page-title{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;          /* optional, keeps line length nice on huge screens */
+}
